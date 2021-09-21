@@ -2,21 +2,14 @@
 ## SETUP ##
 ###########
 import os
-import werkzeug
-import ntpath
 from time import time, sleep
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-import math
 from datetime import datetime, timedelta
-import sched
-import requests
 import discord
 from youtubesearchpython.__future__ import *
-import uuid
 from discord.ext import commands
 from pytube import *
-import ffmpeg
 import asyncio
 intents = discord.Intents.default()
 intents.members = True
