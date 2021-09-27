@@ -154,6 +154,4 @@ async def stop(ctx):
     global stop_b
     stop_b = True
 
-
-
 client.run('ODg5NjExMjE0NDU4NTk3NDA3.YUjxAQ.qwSrxiEObnh85T-XvmbVWJNjmOo')
