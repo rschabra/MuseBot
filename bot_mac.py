@@ -7,6 +7,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from datetime import datetime, timedelta
 import discord
+from ffmpeg import *
 from youtubesearchpython.__future__ import *
 from youtubesearchpython.internal.constants import ResultMode
 from discord.ext import commands
@@ -123,9 +124,9 @@ async def downloadPop(ctx, vc):
         title = titles.pop()
         yt = YouTube(link)
         ys = yt.streams.filter(only_audio=True)[0]
-        ys.download(output_path = 'E:/MusicBot/temp_muse/', filename = 'current_song.mp3')
+        ys.download(output_path = 'temp_muse/', filename = 'current_song.mp3')
         await ctx.send(f"Now playing **{title}**")
-        vc.play(discord.FFmpegPCMAudio(source='E:/MusicBot/temp_muse/current_song.mp3', **FFMPEG_OPTIONS), after=lambda e: os.remove("E:/MusicBot/temp_muse/current_song.mp3"))
+        vc.play(discord.FFmpegPCMAudio(source='temp_muse/current_song.mp3', executable="ffmpeg/bin/ffmpeg.exe", **FFMPEG_OPTIONS, before_options="sudo"), after=lambda e: os.remove("temp_muse/current_song.mp3"))
     while vc.is_playing():
         await asyncio.sleep(1)
         global skip_b
